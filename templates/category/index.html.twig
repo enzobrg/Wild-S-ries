@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All categories{% endblock %}
-
 {% block body %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center mt-4 mb-4 text-light">All Categories</h1>
 {% for category in categories %}
-    <div>
-        <a class="text-decoration-none text-dark" href="{{ path("category_show", { categoryName: category.name }) }}">
-            <h2>{{ category.name }}</h2>
-        </a>
+            <div class="col col-4 d-flex flex-column text-center">
+                <a class="text-decoration-none text-light mt-5 mb-4" href="{{ path("category_show", { categoryName: category.name }) }}">
+                    <h2>{{ category.name }}↗️</h2>
+                </a>
+            </div>
+        {% endfor %}
+        </div>
     </div>
-    {% endfor %}
 {% endblock %}

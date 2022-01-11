@@ -5,13 +5,15 @@
 {% block body %}
     <div class="media m-auto w-50">
         <div class="media-body">
-            <h1 class="mb-5 text-center mt-4">{{ program.title }}</h1>
-            <p>{{ season.description }}</p>
+            <h1 class="mb-5 text-center mt-4 text-center text-light">{{ program.title }}</h1>
+            <p class="text-center text-light">{{ season.description }}</p>
         </div>
         <div class="accordion" id="accordionExample">
-            <h4>Episode {{ episode.number }} : {{ episode.title }}</h4>
-            <p>{{ episode.synopsis }}</p>
+            <h4 class="text-light text-center mt-5">Episode {{ episode.number }} : {{ episode.title }}</h4>
+            <p class="text-light text-center mt-5">{{ episode.synopsis }}</p>
         </div>
+        <div class="mt-5 d-flex justify-content-center">
         <a class="btn btn-warning mt-5" href="{{ path('app_index') }}">Retour à l'accueil</a>
+        </div>
     </div>
 {% endblock %}

@@ -4,20 +4,24 @@
 
 {% block body %}
     <div class="media">
-        <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
-        <div class="media-body">
-            <h1 class="mt-0">{{ program.title }}</h1>
-            <p>{{ program.summary }}</p>
-            <p>Catégorie : {{ program.category.name }}</p>
+        <div class="d-flex justify-content-center">
+        <img class="align-self-start mr-3 text-center mt-2" src="{{program.poster}}" alt="{{ program.title }} poster">
         </div>
-        <div>
+        <div class="media-body">
+            <h1 class="mt-2 text-light text-center">{{ program.title }}</h1>
+            <p class="text-light text-center mt-2">{{ program.summary }}</p>
+            <p class="text-light text-center mt-2">Catégorie : {{ program.category.name }}</p>
+        </div>
+        <div class="text-center mt-4">
             {% for season in seasons %}
                 <a class="btn btn-warning" href="{{ path('program_season_show', { program: program.id, season: season.id}) }}">{{ season.description }}</a></li>
             {% endfor %}
         </div>
     </div>
 
-    <a href="{{ path('program_index') }}">
-        Retour à la liste des programmes
+    <div class="text-center mt-4">
+    <a href="{{ path('program_index') }}" class="text-light nav-link">
+        Retour à la liste des programmes⬅️
     </a>
+    </div>
 {% endblock %}
