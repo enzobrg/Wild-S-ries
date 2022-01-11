@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-light text-center mt-4">
+        <h1>Want to edit season? Go here ⬇️</h1>
+    </div>
+
+    <table class="table text-light">
+        <thead>
+            <tr class="text-light">
+                <th>Id</th>
+                <th>Number</th>
+                <th>Year</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for season in seasons %}
+            <tr class="text-light">
+                <td>{{ season.id }}</td>
+                <td>{{ season.number }}</td>
+                <td>{{ season.year }}</td>
+                <td>{{ season.description }}</td>
+                <td>
+                    <a href="{{ path('season_show', {'id': season.id}) }}" class="text-light nav-link">show</a>
+                    <a href="{{ path('season_edit', {'id': season.id}) }}" class="text-light nav-link">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('season_new') }}">Create new</a>
+{% endblock %}

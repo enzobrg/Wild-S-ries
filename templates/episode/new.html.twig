@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center text-light">Want to add new Episode? Click here ⬇️</h1>
+<div class="text-light">
+    {{ include('episode/_form.html.twig') }}
+</div>
+    <div class="text-light nav-link">
+        <a href="{{ path('episode_index') }}">Back to list</a>
+    </div>
+{% endblock %}

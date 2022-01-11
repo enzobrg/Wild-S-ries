@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\EpisodeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,16 +28,20 @@ class Episode
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
+     * @Assert\Length(max="255", maxMessage="La titre saisie {{ value }} est trop longue")
      */
     private $title;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
      */
     private $number;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
      */
     private $synopsis;
 

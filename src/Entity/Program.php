@@ -5,9 +5,13 @@ namespace App\Entity;
 use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @UniqueEntity("title", message="Ce titre existe déja")
  */
 class Program
 {
@@ -20,11 +24,14 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
+     * @Assert\Length(max="255", maxMessage="La titre saisie {{ value }} est trop longue")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
      */
     private $summary;
 
@@ -41,11 +48,13 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
      */
     private $country;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le champ ne doit pas être vide")
      */
     private $year;
 
